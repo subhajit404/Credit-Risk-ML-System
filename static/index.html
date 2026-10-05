@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Credit Risk OS — Underwriting Intelligence Platform</title>
+  <meta name="description" content="Minimalist, premium machine-learning credit risk intelligence and loan default assessment." />
+  
+  <!-- Modern Swiss / Fintech Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Ambient Glow & High-Tech Grid Background -->
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <div class="app-shell">
+
+    <!-- Top Executive Header -->
+    <header class="app-header">
+      <div class="header-brand">
+        <div class="brand-symbol">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="24" height="24" rx="6" stroke="#2C3480" stroke-width="2" />
+            <path d="M7 14H21M14 7V21" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" />
+            <circle cx="14" cy="14" r="3" fill="#2C3480" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title-row">
+            <h1 class="brand-title">CREDIT RISK OS</h1>
+            <span class="brand-badge">ML ENGINE v2.4</span>
+          </div>
+          <p class="brand-subtitle">Autonomous Underwriting & Probability Intelligence</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Quick Presets for Instant Testing -->
+        <div class="preset-controls" aria-label="Preset Scenarios">
+          <span class="preset-label">Scenarios:</span>
+          <button type="button" class="preset-btn" id="presetLowRisk" title="Load low-risk prime applicant profile">Prime (Low)</button>
+          <button type="button" class="preset-btn" id="presetHighRisk" title="Load high-risk subprime applicant profile">Subprime (High)</button>
+          <button type="button" class="preset-btn preset-btn--reset" id="presetReset" title="Reset to standard defaults">Reset</button>
+        </div>
+
+        <!-- API Connection Status -->
+        <div class="status-pill" id="apiStatus">
+          <span class="status-dot" id="apiDot"></span>
+          <span class="status-label" id="apiStatusText">CONNECTING…</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Executive Grid Layout -->
+    <main class="dashboard-grid">
+
+      <!-- Left Column: Parameters Input Desk -->
+      <section class="panel-column form-column">
+        <form class="risk-card" id="riskForm" novalidate>
+
+          <!-- Section 1: Applicant Profile -->
+          <div class="card-section">
+            <div class="section-header">
+              <span class="section-num">01</span>
+              <div>
+                <h2 class="section-title">Applicant Profile</h2>
+                <p class="section-desc">Personal background and financial baseline</p>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <!-- Age -->
+              <div class="field-group">
+                <label for="person_age" class="field-label">Age</label>
+                <div class="input-wrap">
+                  <input type="number" id="person_age" name="person_age" min="18" max="100" step="1" value="30" required />
+                  <span class="field-affix">yrs</span>
+                </div>
+              </div>
+
+              <!-- Annual Income -->
+              <div class="field-group">
+                <label for="person_income" class="field-label">Annual Income</label>
+                <div class="input-wrap">
+                  <span class="field-affix prefix">₹</span>
+                  <input type="number" id="person_income" name="person_income" min="0" step="1000" value="600000" required />
+                </div>
+              </div>
+
+              <!-- Home Ownership -->
+              <div class="field-group">
+                <label for="person_home_ownership" class="field-label">Home Ownership</label>
+                <div class="select-wrap">
+                  <select id="person_home_ownership" name="person_home_ownership" required>
+                    <option value="RENT">Renting</option>
+                    <option value="MORTGAGE">Mortgage</option>
+                    <option value="OWN">Owned Outright</option>
+                    <option value="OTHER">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Employment Length -->
+              <div class="field-group">
+                <label for="person_emp_length" class="field-label">Employment Tenure</label>
+                <div class="input-wrap">
+                  <input type="number" id="person_emp_length" name="person_emp_length" min="0" max="60" step="0.5" value="5" required />
+                  <span class="field-affix">yrs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Loan Facility & Terms -->
+          <div class="card-section">
+            <div class="section-header">
+              <span class="section-num">02</span>
+              <div>
+                <h2 class="section-title">Loan Facility & Terms</h2>
+                <p class="section-desc">Principal requested and risk-adjusted pricing</p>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <!-- Purpose -->
+              <div class="field-group">
+                <label for="loan_intent" class="field-label">Loan Purpose</label>
+                <div class="select-wrap">
+                  <select id="loan_intent" name="loan_intent" required>
+                    <option value="PERSONAL">Personal</option>
+                    <option value="EDUCATION">Education</option>
+                    <option value="MEDICAL">Medical</option>
+                    <option value="VENTURE">Business / Venture</option>
+                    <option value="HOMEIMPROVEMENT">Home Improvement</option>
+                    <option value="DEBTCONSOLIDATION">Debt Consolidation</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Loan Grade -->
+              <div class="field-group">
+                <label for="loan_grade" class="field-label">Internal Grade</label>
+                <div class="select-wrap">
+                  <select id="loan_grade" name="loan_grade" required>
+                    <option value="A">Grade A (Prime)</option>
+                    <option value="B">Grade B (Near Prime)</option>
+                    <option value="C">Grade C (Standard)</option>
+                    <option value="D">Grade D (Subprime)</option>
+                    <option value="E">Grade E (High Yield)</option>
+                    <option value="F">Grade F (Speculative)</option>
+                    <option value="G">Grade G (Distressed)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Loan Amount -->
+              <div class="field-group">
+                <label for="loan_amnt" class="field-label">Loan Amount</label>
+                <div class="input-wrap">
+                  <span class="field-affix prefix">₹</span>
+                  <input type="number" id="loan_amnt" name="loan_amnt" min="0" step="500" value="100000" required />
+                </div>
+              </div>
+
+              <!-- Interest Rate -->
+              <div class="field-group">
+                <label for="loan_int_rate" class="field-label">Interest Rate</label>
+                <div class="input-wrap">
+                  <input type="number" id="loan_int_rate" name="loan_int_rate" min="0" max="40" step="0.01" value="11.5" required />
+                  <span class="field-affix">%</span>
+                </div>
+              </div>
+
+              <!-- Loan % Income (Full Width) -->
+              <div class="field-group field-group--full">
+                <div class="label-with-badge">
+                  <label for="loan_percent_income" class="field-label">Debt-to-Income (DTI) Ratio</label>
+                  <span class="calc-badge" id="dtiStatusBadge">Optimal (17%)</span>
+                </div>
+                <div class="input-wrap">
+                  <input type="number" id="loan_percent_income" name="loan_percent_income" min="0" max="1" step="0.01" value="0.17" required />
+                  <span class="field-affix">ratio</span>
+                </div>
+                <p class="field-note" id="percentHint">Auto-calculated: loan amount ÷ annual income. Manual overrides permitted.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Credit Bureau Record -->
+          <div class="card-section">
+            <div class="section-header">
+              <span class="section-num">03</span>
+              <div>
+                <h2 class="section-title">Credit Bureau Record</h2>
+                <p class="section-desc">Historical repayment and bureau tenure</p>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <!-- Prior Default -->
+              <div class="field-group">
+                <label for="cb_person_default_on_file" class="field-label">Prior Default Record</label>
+                <div class="select-wrap">
+                  <select id="cb_person_default_on_file" name="cb_person_default_on_file" required>
+                    <option value="N">No (Clean Bureau)</option>
+                    <option value="Y">Yes (Adverse History)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Credit History Length -->
+              <div class="field-group">
+                <label for="cb_person_cred_hist_length" class="field-label">Credit Bureau History</label>
+                <div class="input-wrap">
+                  <input type="number" id="cb_person_cred_hist_length" name="cb_person_cred_hist_length" min="0" max="60" step="1" value="6" required />
+                  <span class="field-affix">yrs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submission Action Bar -->
+          <div class="form-action-bar">
+            <button type="submit" id="submitBtn" class="btn-primary">
+              <span class="btn-content">
+                <span class="btn-label">Evaluate Credit Risk</span>
+                <svg class="btn-arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3.33334 8H12.6667M12.6667 8L8.00001 3.33334M12.6667 8L8.00001 12.6667" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="btn-spinner" aria-hidden="true"></span>
+            </button>
+            <p class="error-note" id="errorNote" role="alert" hidden></p>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- Right Column: Executive Risk Intelligence & Verdict -->
+      <section class="panel-column verdict-column">
+
+        <!-- Standby Placeholder Card (Visible before first evaluation) -->
+        <div class="standby-card" id="standbyCard">
+          <div class="standby-radar">
+            <div class="radar-sweep"></div>
+            <div class="radar-dot"></div>
+          </div>
+          <h3 class="standby-title">Underwriting Engine Ready</h3>
+          <p class="standby-desc">Configure applicant parameters on the left and trigger evaluation to generate model probability, risk classification, and decision factors.</p>
+          <div class="standby-tags">
+            <span class="standby-tag">XGBoost Ensemble</span>
+            <span class="standby-tag">Optimal Threshold Calibrated</span>
+            <span class="standby-tag">Real-Time Scoring</span>
+          </div>
+        </div>
+
+        <!-- Realized Verdict Section -->
+        <section class="verdict-card" id="verdict" aria-live="polite" hidden>
+          
+          <div class="verdict-header">
+            <div>
+              <span class="card-eyebrow">ASSESSMENT REPORT</span>
+              <h2 class="verdict-title">Model Risk Decision</h2>
+            </div>
+            <!-- Minimalist Executive Badge / Stamp -->
+            <div class="stamp-wrap">
+              <div class="stamp" id="stampBadge">
+                <span class="stamp-icon" id="stampIcon">●</span>
+                <span id="stampText">LOW RISK</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gauge and Key Metrics Row -->
+          <div class="verdict-body">
+            
+            <!-- Circular Gauge Visualization -->
+            <div class="gauge-card">
+              <div class="gauge-container">
+                <svg viewBox="0 0 200 200" class="gauge">
+                  <circle class="gauge__track" cx="100" cy="100" r="86" />
+                  <circle class="gauge__fill" id="gaugeFill" cx="100" cy="100" r="86" />
+                  <line class="gauge__threshold" id="gaugeThreshold" x1="100" y1="12" x2="100" y2="30" />
+                </svg>
+                <div class="gauge__readout">
+                  <div class="gauge-figure-row">
+                    <span class="gauge__number" id="probNumber">0.0</span>
+                    <span class="gauge__percent">%</span>
+                  </div>
+                  <span class="gauge__caption">DEFAULT PROBABILITY</span>
+                </div>
+              </div>
+              <div class="threshold-legend">
+                <span class="legend-indicator"></span>
+                <span class="legend-text">Needle indicates calibrated threshold boundary</span>
+              </div>
+            </div>
+
+            <!-- Quantitative Metrics Matrix -->
+            <div class="metrics-deck">
+              <div class="metric-tile">
+                <span class="metric-tile-title">DEFAULT PROBABILITY</span>
+                <span class="metric-tile-value" id="factProb">—</span>
+                <span class="metric-tile-desc">Estimated likelihood of 90+ days default</span>
+              </div>
+
+              <div class="metric-tile">
+                <span class="metric-tile-title">DECISION CUTOFF</span>
+                <span class="metric-tile-value" id="factThreshold">—</span>
+                <span class="metric-tile-desc">Cost-calibrated cutoff score</span>
+              </div>
+
+              <div class="metric-tile metric-tile--highlight">
+                <span class="metric-tile-title">EXECUTIVE VERDICT</span>
+                <span class="metric-tile-value verdict-result-value" id="factResult">—</span>
+                <span class="metric-tile-desc" id="verdictSummaryText">Evaluation complete</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Audit Log / Factors Breakdown -->
+          <div class="verdict-audit">
+            <h4 class="audit-title">UNDERWRITING PARAMETER SUMMARY</h4>
+            <div class="audit-grid">
+              <div class="audit-item">
+                <span class="audit-k">Income</span>
+                <span class="audit-v" id="auditIncome">—</span>
+              </div>
+              <div class="audit-item">
+                <span class="audit-k">Loan Amount</span>
+                <span class="audit-v" id="auditLoan">—</span>
+              </div>
+              <div class="audit-item">
+                <span class="audit-k">DTI Ratio</span>
+                <span class="audit-v" id="auditDti">—</span>
+              </div>
+              <div class="audit-item">
+                <span class="audit-k">Bureau Default</span>
+                <span class="audit-v" id="auditDefault">—</span>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+      </section>
+
+    </main>
+
+    <!-- Executive Footer -->
+    <footer class="app-footer">
+      <div class="footer-content">
+        <p class="footer-legal">Automated Model Intelligence • For reference & risk underwriting analysis • Model Version 2.4.0</p>
+        <p class="footer-status-tag">SYSTEM: ACTIVE • COBALT ENGINE</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
