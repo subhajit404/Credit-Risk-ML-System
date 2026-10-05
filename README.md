@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="hero.svg" alt="Credit Ledger: an animated gauge scores one applicant as high risk, then another as low risk" width="100%">
+<img src="https://cdn.jsdelivr.net/gh/subhajit404/Credit-Risk-ML-System@main/hero.svg" alt="Credit Ledger: an animated gauge scores one applicant as high risk, then another as low risk" width="100%">
 
 <br>
 
@@ -45,7 +45,7 @@ The notebook goes further than the app does. It also trains a logistic-regressio
 ## How it works
 
 <p align="center">
-  <img src="pipeline.svg" alt="Pipeline: dataset, clean, preprocess, tune, calibrate, serve" width="100%">
+  <img src="https://cdn.jsdelivr.net/gh/subhajit404/Credit-Risk-ML-System@main/pipeline.svg" alt="Pipeline: dataset, clean, preprocess, tune, calibrate, serve" width="100%">
 </p>
 
 | Stage | What happens |
@@ -114,7 +114,7 @@ sequenceDiagram
 ## Model performance
 
 <p align="center">
-  <img src="metrics.svg" alt="Bar chart: logistic regression versus tuned XGBoost on accuracy, precision, recall and F1" width="100%">
+  <img src="https://cdn.jsdelivr.net/gh/subhajit404/Credit-Risk-ML-System@main/metrics.svg" alt="Bar chart: logistic regression versus tuned XGBoost on accuracy, precision, recall and F1" width="100%">
 </p>
 
 Everything below uses the same stratified 20% test split (6,305 loans, 1,362 of them defaults) and a 0.5 cut-off.
