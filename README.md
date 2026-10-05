@@ -4,7 +4,7 @@
 
 <br>
 
-<img alt="Python 3.12.3" src="https://img.shields.io/badge/python-3.11-3776AB?style=flat-square&labelColor=141d26&logo=python&logoColor=white">
+<img alt="Python 3.12.3" src="https://img.shields.io/badge/python-3.12.3-3776AB?style=flat-square&labelColor=141d26&logo=python&logoColor=white">
 <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-0.115-009688?style=flat-square&labelColor=141d26&logo=fastapi&logoColor=white">
 <img alt="XGBoost" src="https://img.shields.io/badge/XGBoost-tuned%20and%20calibrated-EC6B23?style=flat-square&labelColor=141d26">
 <img alt="scikit-learn" src="https://img.shields.io/badge/scikit--learn-pipeline-F7931E?style=flat-square&labelColor=141d26&logo=scikitlearn&logoColor=white">
