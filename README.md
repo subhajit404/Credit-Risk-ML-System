@@ -13,7 +13,15 @@
 
 <br><br>
 
-[Overview](#overview) | [How it works](#how-it-works) | [Model performance](#model-performance) | [API](#api-reference) | [Quick start](#quick-start) | [Deploy](#deploy-on-render) | [Known issues](#known-issues-and-roadmap)
+<p align="center">
+  <a href="#overview">📖 Overview</a> &nbsp;•&nbsp;
+  <a href="#how-it-works">⚙️ How it works</a> &nbsp;•&nbsp;
+  <a href="#model-performance">📊 Model performance</a> &nbsp;•&nbsp;
+  <a href="#api-reference">🔌 API</a> &nbsp;•&nbsp;
+  <a href="#quick-start">🚀 Quick start</a> &nbsp;•&nbsp;
+  <a href="#deploy-on-render">☁️ Deploy</a> &nbsp;•&nbsp;
+  <a href="#known-issues-and-roadmap">🛠️ Known issues</a>
+</p>
 
 </div>
 
