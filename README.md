@@ -12,17 +12,15 @@
 <img alt="Deploys on Render" src="https://img.shields.io/badge/deploys%20on-Render-46E3B7?style=flat-square&labelColor=141d26&logo=render&logoColor=white">
 
 <br><br>
+---
 
-<p align="center">
-  <a href="#overview">📖 Overview</a> &nbsp;•&nbsp;
-  <a href="#how-it-works">⚙️ How it works</a> &nbsp;•&nbsp;
-  <a href="#model-performance">📊 Model performance</a> &nbsp;•&nbsp;
-  <a href="#api-reference">🔌 API</a> &nbsp;•&nbsp;
-  <a href="#quick-start">🚀 Quick start</a> &nbsp;•&nbsp;
-  <a href="#deploy-on-render">☁️ Deploy</a> &nbsp;•&nbsp;
-  <a href="#known-issues-and-roadmap">🛠️ Known issues</a>
-</p>
+<div align="center">
 
+**[Overview](#overview)** · **[How it works](#how-it-works)** · **[Model performance](#model-performance)** · **[API](#api-reference)** · **[Quick start](#quick-start)** · **[Deploy](#deploy-on-render)** · **[Known issues](#known-issues-and-roadmap)**
+
+</div>
+
+---
 </div>
 
 <!-- Once the Render service is live, add it here:
